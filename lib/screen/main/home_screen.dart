@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:random_game/components/lists/member_list_item.dart';
-import 'package:random_game/assets/testdata.dart';
+import 'package:random_game/assets/test_tean_data.dart';
+import 'package:random_game/components/lists/member_card_list.dart';
+import 'package:random_game/components/lists/team_member_list.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -17,49 +18,21 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    final testData = TestData().members;
-
+    final testTeamData = TestTeamData().teamMembers;
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: testData.map((member) => MemberListItem(member)).toList(),
-        ),
-      ),
-      bottomNavigationBar: const BottomAppBar(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: <Widget>[
-            Flexible(
-                flex: 1,
-                child: Center(
-                    child: Column(
-                  children: <Widget>[
-                    Icon(Icons.home),
-                    Text('이번주 당번'),
-                  ],
-                ))),
-            Flexible(
-                flex: 1,
-                child: Center(
-                    child: Column(
-                  children: <Widget>[
-                    Icon(Icons.search),
-                    Text('Search'),
-                  ],
-                ))),
-            Flexible(
-                flex: 1,
-                child: Center(
-                    child: Column(
-                  children: <Widget>[
-                    Icon(Icons.person),
-                    Text('Profiasdfasle'),
-                  ],
-                ))),
+          children: [
+            const SizedBox(height: 20),
+            const MemberCardList(),
+            const SizedBox(height: 20),
+            ...testTeamData.map((team) => TeamMemberListItem(team)),
+            const SizedBox(height: 20),
           ],
         ),
       ),
     );
   }
 }
+// ...testData.map((member) => MemberListItem(member)).toList()
