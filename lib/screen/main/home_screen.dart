@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:random_game/assets/testdata.dart';
 import 'package:random_game/components/lists/member_list_item.dart';
+import 'package:random_game/assets/testdata.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -10,31 +10,23 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
+  @override
+  void initState() {
+    super.initState();
   }
 
-  final testData = TestData();
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
+    final testData = TestData().members;
+
+    return Scaffold(
+      body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            MemberListItem(Member(
-                name: 'ㅁㄴㅇ',
-                email: 'asdasf  ',
-                avatarUrl:
-                    'https://cdn.itdaily.kr/news/photo/202312/218699_223437_5245.png'))
-          ],
+          children: testData.map((member) => MemberListItem(member)).toList(),
         ),
       ),
-      bottomNavigationBar: BottomAppBar(
+      bottomNavigationBar: const BottomAppBar(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[

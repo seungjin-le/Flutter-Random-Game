@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:random_game/model/member/model_member.dart';
 
 class MemberListItem extends StatelessWidget {
   final Member member;
@@ -15,16 +16,4 @@ class MemberListItem extends StatelessWidget {
       subtitle: Text(member.email),
     );
   }
-}
-
-class Member {
-  final String name;
-  final String email;
-  final String avatarUrl;
-
-  const Member({
-    required this.name,
-    required this.email,
-    required this.avatarUrl,
-  });
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:random_game/screen/main/home.dart';
+import 'package:random_game/screen/main/home_screen.dart';
 
 import 'assets/colors.dart';
 
@@ -10,7 +10,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
