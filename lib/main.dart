@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:random_game/screen/main/home_screen.dart';
+import 'package:random_game/screen/main/week/home_screen.dart';
 import 'package:random_game/screen/main/week/cleaning_member_screen.dart';
 
 import 'assets/colors.dart';
