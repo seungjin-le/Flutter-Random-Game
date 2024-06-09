@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:random_game/screen/main/week/home_screen.dart';
 import 'package:random_game/screen/main/week/cleaning_member_screen.dart';
-
 import 'assets/colors.dart';
 import 'screen/main/profile_screen.dart';
 
@@ -70,7 +69,8 @@ class _MainScreenState extends State<MainScreen> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.amber[800],
+        selectedItemColor: Colors.white,
+        selectedFontSize: 12,
         onTap: _onItemTapped,
       ),
     );
