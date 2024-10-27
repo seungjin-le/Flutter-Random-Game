@@ -1,5 +1,3 @@
-// import 'package:random_game/model/member/model_team_members.dart';
-
 import 'package:random_game/model/member/model_team_members.dart';
 
 class TestTeamData {
