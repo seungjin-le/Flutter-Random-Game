@@ -1,6 +1,7 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
+import 'package:random_game/assets/text_data.dart';
 
 const WHITE = Color(0xFFFFFFFF);
 const BOTTOM_SHEET_BG = Color(0xFFF8F8F8);
@@ -58,6 +59,47 @@ Color get randomColor =>
     Color((math.Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1.0);
 
 class AppColors {
+  static const Color n10 = Color(0xFFF8F8F8);
+  static const Color n20 = Color(0xFFEAEAEA);
+  static const Color n30 = Color(0xFFDFDEDE);
+  static const Color n40 = Color(0xFFC8C8C8);
+  static const Color n50 = Color(0xFFAAAAAA);
+  static const Color n60 = Color(0xFF848484);
+  static const Color n70 = Color(0xFF666666);
+  static const Color n80 = Color(0xFF3D3D3D);
+  static const Color n90 = Color(0xFF212121);
+  static const Color n100 = Color(0xFF000000);
+
+  static const Color s05 = Color(0xFFF6F9FF);
+  static const Color s10 = Color(0xFFEDF2FF);
+  static const Color s20 = Color(0xFFEAEAEA);
+  static const Color s30 = Color(0xFFC6D6FF);
+  static const Color s40 = Color(0xFF487AFF);
+  static const Color s50 = Color(0xFF416EE6);
+  static const Color s60 = Color(0xFF3A62CC);
+  static const Color s70 = Color(0xFF365CBF);
+  static const Color s80 = Color(0xFF2B4999);
+  static const Color s90 = Color(0xFF203773);
+  static const Color s100 = Color(0xFF192B59);
+
+  static const Color y05 = Color(0xFFFFFCF8);
+  static const Color y10 = Color(0xFFFFF3DD);
+  static const Color y20 = Color(0xFFFFDC99);
+  static const Color y30 = Color(0xFFFFCB66);
+  static const Color y40 = Color(0xFFFFBA33);
+  static const Color y50 = Color(0xFFFFA800);
+  static const Color y60 = Color(0xFFCC8700);
+  static const Color y70 = Color(0xFF996500);
+  static const Color y80 = Color(0xFF664300);
+  static const Color y90 = Color(0xFF332200);
+
+  static const Color error = Color(0xFFFF3257);
+  static const Color gray = Color(0xFFFAFAFC);
+  static const Color mGray = Color(0xFFF9F9F9);
+  static const Color orange = Color(0xFFFFA800);
+  static const Color blue = Color(0xFF487AFF);
+  static const Color white = Color(0xFFFFFFFF);
+
   static const Color primary100 = Color(0xFF382BF0);
   static const Color primary200 = Color(0xFF5E43F3);
   static const Color primary300 = Color(0xFF7A5AF5);
@@ -89,8 +131,24 @@ class AppTheme {
     dividerColor: AppColors.surface400,
     canvasColor: AppColors.surface500,
     textTheme: const TextTheme(
-      bodyLarge: TextStyle(color: AppColors.primary600),
-      bodyMedium: TextStyle(color: AppColors.primary500),
+      displayLarge: TextStyle(
+        color: AppColors.n80,
+        fontSize: TextStyles.h1.fontSize,
+      ),
+      displayMedium: TextStyle(color: AppColors.n80),
+      displaySmall: TextStyle(color: AppColors.n80),
+      headlineLarge: TextStyle(color: AppColors.n80),
+      headlineMedium: TextStyle(color: AppColors.n80),
+      headlineSmall: TextStyle(color: AppColors.n80),
+      titleLarge: TextStyle(color: AppColors.n80),
+      titleMedium: TextStyle(color: AppColors.n80),
+      titleSmall: TextStyle(color: AppColors.n80),
+      bodyLarge: TextStyle(color: AppColors.n80),
+      bodyMedium: TextStyle(color: AppColors.n80),
+      bodySmall: TextStyle(color: AppColors.n80),
+      labelLarge: TextStyle(color: AppColors.n80),
+      labelMedium: TextStyle(color: AppColors.n80),
+      labelSmall: TextStyle(color: AppColors.n80),
     ),
     appBarTheme: const AppBarTheme(
       color: AppColors.surfaceMixed100,
