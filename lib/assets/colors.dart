@@ -131,10 +131,7 @@ class AppTheme {
     dividerColor: AppColors.surface400,
     canvasColor: AppColors.surface500,
     textTheme: const TextTheme(
-      displayLarge: TextStyle(
-        color: AppColors.n80,
-        fontSize: TextStyles.h1.fontSize,
-      ),
+      displayLarge: TextStyle(color: AppColors.n80),
       displayMedium: TextStyle(color: AppColors.n80),
       displaySmall: TextStyle(color: AppColors.n80),
       headlineLarge: TextStyle(color: AppColors.n80),
