@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:random_game/assets/colors.dart';
+// import 'package:random_game/components/dialog/AlertDialog.dart';
 
 class WaitingScreen extends StatefulWidget {
   const WaitingScreen({super.key});
@@ -32,16 +33,49 @@ class _WaitingScreenState extends State<WaitingScreen> {
     }
   }
 
-  void onEnterPhoneNumber() {
+  Container onEnterPhoneNumber() {
     setState(() {
       isLoading = true;
     });
 
-    Future.delayed(const Duration(seconds: 15), () {
+    Future.delayed(const Duration(seconds: 3), () {
       setState(() {
         isLoading = false;
+        showDialog(
+          context: context,
+          barrierDismissible: false, //바깥 영역 터치시 닫을지 여부 결정
+          builder: (context) {
+            return AlertDialog(
+              titlePadding: const EdgeInsets.all(0),
+              contentPadding: const EdgeInsets.all(0),
+              actionsPadding: const EdgeInsets.all(0),
+              actionsOverflowAlignment: OverflowBarAlignment.center,
+              title: const Column(
+                children: [
+                  SizedBox(height: 8, width: double.infinity, child: Divider(color: AppColors.y50)),
+                  Text("내용", style: TextStyle(fontSize: 20, color: AppColors.n80)),
+                ],
+              ),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop(); //창 닫기
+                  },
+                  child: const Text("네", style: TextStyle(fontSize: 20, color: AppColors.n80)),
+                ),
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop(); //창 닫기
+                  },
+                  child: const Text("아니요", style: TextStyle(fontSize: 20, color: AppColors.n80)),
+                ),
+              ],
+            );
+          },
+        );
       });
     });
+    return Container();
   }
 
   @override
