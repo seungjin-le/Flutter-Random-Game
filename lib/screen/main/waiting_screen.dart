@@ -1,10 +1,8 @@
-import 'dart:math';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:random_game/assets/colors.dart';
 
 class WaitingScreen extends StatefulWidget {
-  const WaitingScreen({Key? key}) : super(key: key);
+  const WaitingScreen({super.key});
 
   @override
   State createState() => _WaitingScreenState();
@@ -20,7 +18,6 @@ class _WaitingScreenState extends State<WaitingScreen> {
       });
       return;
     } else if (phoneNumber.length < 8) {
-      print('value: $value ${value.length}');
       setState(() {
         phoneNumber += value;
       });
@@ -40,7 +37,7 @@ class _WaitingScreenState extends State<WaitingScreen> {
       isLoading = true;
     });
 
-    Future.delayed(Duration(seconds: 5), () {
+    Future.delayed(const Duration(seconds: 15), () {
       setState(() {
         isLoading = false;
       });
@@ -50,240 +47,370 @@ class _WaitingScreenState extends State<WaitingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+      body: Stack(
         children: [
-          Expanded(
-            flex: 1,
-            child: Image.network(
-              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRatVzDGmEFyVULU8VupVmqasEG7Ia7fJxTcw&s',
-              width: double.infinity,
-              height: double.infinity,
-              fit: BoxFit.cover,
-            ),
-          ),
-          Expanded(
-            flex: 1,
-            child: Column(
-              children: [
-                Expanded(
-                  flex: 2,
-                  child: Center(
-                    child: Text(
-                      '010-${formatPhoneNumber(phoneNumber)}',
-                      style: TextStyle(fontSize: 30),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Expanded(
+                flex: 1,
+                child: Stack(
+                  children: [
+                    Image.network(
+                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRatVzDGmEFyVULU8VupVmqasEG7Ia7fJxTcw&s',
+                      width: double.infinity,
+                      height: double.infinity,
+                      fit: BoxFit.cover,
                     ),
-                  ),
+                    Positioned(
+                      child: Container(
+                        color: AppColors.n100.withOpacity(0.2),
+                        width: double.infinity,
+                        height: double.infinity,
+                      ),
+                    ),
+                    Positioned(
+                      top: 30,
+                      left: 30,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Image.network(
+                            'https://bubaum.com/imgs/company/ci.png',
+                            width: 100,
+                            height: 50,
+                          ),
+                          const SizedBox(height: 20),
+                          const Text('휴대폰 번호를', style: TextStyle(fontSize: 35, color: AppColors.white)),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Text('입력하시면 ', style: TextStyle(fontSize: 35, color: AppColors.white)),
+                              Image.network(
+                                'https://cdn.imweb.me/thumbnail/20211130/33278f814663e.png',
+                                width: 50,
+                                height: 50,
+                              ),
+                              const Text(' 카톡으로', style: TextStyle(fontSize: 35, color: AppColors.white)),
+                            ],
+                          ),
+                          const Text('알려드립니다.', style: TextStyle(fontSize: 35, color: AppColors.white)),
+                        ],
+                      ),
+                    ),
+                    Positioned(
+                      left: 30,
+                      bottom: 30,
+                      child: Container(
+                          width: 300,
+                          height: 300,
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                            color: AppColors.s40,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: const Center(
+                            heightFactor: 1,
+                            widthFactor: 1,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  '현재 웨이팅',
+                                  style: TextStyle(fontSize: 35, color: AppColors.white),
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      '10',
+                                      style:
+                                          TextStyle(fontSize: 35, fontWeight: FontWeight.bold, color: AppColors.white),
+                                    ),
+                                    Text(
+                                      '팀',
+                                      style: TextStyle(fontSize: 35, color: AppColors.white),
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      '예상 시간 ',
+                                      style: TextStyle(fontSize: 35, color: AppColors.white),
+                                    ),
+                                    Text(
+                                      '25',
+                                      style:
+                                          TextStyle(fontSize: 35, fontWeight: FontWeight.bold, color: AppColors.white),
+                                    ),
+                                    Text(
+                                      '분',
+                                      style: TextStyle(fontSize: 35, color: AppColors.white),
+                                    ),
+                                  ],
+                                )
+                              ],
+                            ),
+                          )),
+                    ),
+                  ],
                 ),
-                Expanded(
-                  flex: 1,
-                  child: Row(
-                    children: [
-                      Expanded(
-                        flex: 1,
-                        child: ElevatedButton(
-                            onPressed: () {
-                              onChangingPhoneNumber('1');
-                            },
-                            style: ElevatedButton.styleFrom(
-                              minimumSize:
-                                  const Size(double.infinity, double.infinity),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(00),
-                              ),
-                            ),
-                            child: const Text('1')),
+              ),
+              Expanded(
+                flex: 1,
+                child: Column(
+                  children: [
+                    Expanded(
+                      flex: 2,
+                      child: Center(
+                        child: Text(
+                          '010-${formatPhoneNumber(phoneNumber)}',
+                          style: const TextStyle(fontSize: 40, color: AppColors.n80),
+                        ),
                       ),
-                      Expanded(
-                        flex: 1,
-                        child: ElevatedButton(
-                            onPressed: () {
-                              onChangingPhoneNumber('2');
-                            },
-                            style: ElevatedButton.styleFrom(
-                              minimumSize:
-                                  const Size(double.infinity, double.infinity),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(00),
-                              ),
-                            ),
-                            child: const Text('2')),
+                    ),
+                    Container(
+                      color: AppColors.n20,
+                      height: 1,
+                      width: double.infinity,
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: Row(
+                        children: [
+                          Expanded(
+                            flex: 1,
+                            child: TextButton(
+                                onPressed: () {
+                                  onChangingPhoneNumber('1');
+                                },
+                                style: TextButton.styleFrom(
+                                  minimumSize: const Size(double.infinity, double.infinity),
+                                ),
+                                child: const Text('1', style: TextStyle(fontSize: 20, color: AppColors.n80))),
+                          ),
+                          Container(
+                            color: AppColors.n20,
+                            height: double.infinity,
+                            width: 1,
+                          ),
+                          Expanded(
+                            flex: 1,
+                            child: TextButton(
+                                onPressed: () {
+                                  onChangingPhoneNumber('2');
+                                },
+                                style: TextButton.styleFrom(
+                                  minimumSize: const Size(double.infinity, double.infinity),
+                                ),
+                                child: const Text('2', style: TextStyle(fontSize: 20, color: AppColors.n80))),
+                          ),
+                          Container(
+                            color: AppColors.n20,
+                            height: double.infinity,
+                            width: 1,
+                          ),
+                          Expanded(
+                            flex: 1,
+                            child: TextButton(
+                                onPressed: () {
+                                  onChangingPhoneNumber('3');
+                                },
+                                style: TextButton.styleFrom(
+                                  minimumSize: const Size(double.infinity, double.infinity),
+                                ),
+                                child: const Text('3', style: TextStyle(fontSize: 20, color: AppColors.n80))),
+                          ),
+                        ],
                       ),
-                      Expanded(
-                        flex: 1,
-                        child: ElevatedButton(
-                            onPressed: () {
-                              onChangingPhoneNumber('3');
-                            },
-                            style: ElevatedButton.styleFrom(
-                              minimumSize:
-                                  const Size(double.infinity, double.infinity),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(00),
-                              ),
-                            ),
-                            child: const Text('3')),
+                    ),
+                    Container(
+                      color: AppColors.n20,
+                      height: 1,
+                      width: double.infinity,
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: Row(
+                        children: [
+                          Expanded(
+                            flex: 1,
+                            child: TextButton(
+                                onPressed: () {
+                                  onChangingPhoneNumber('4');
+                                },
+                                style: TextButton.styleFrom(
+                                  minimumSize: const Size(double.infinity, double.infinity),
+                                ),
+                                child: const Text('4', style: TextStyle(fontSize: 20, color: AppColors.n80))),
+                          ),
+                          Container(
+                            color: AppColors.n20,
+                            height: double.infinity,
+                            width: 1,
+                          ),
+                          Expanded(
+                            flex: 1,
+                            child: TextButton(
+                                onPressed: () {
+                                  onChangingPhoneNumber('5');
+                                },
+                                style: TextButton.styleFrom(
+                                  minimumSize: const Size(double.infinity, double.infinity),
+                                ),
+                                child: const Text('5', style: TextStyle(fontSize: 20, color: AppColors.n80))),
+                          ),
+                          Container(
+                            color: AppColors.n20,
+                            height: double.infinity,
+                            width: 1,
+                          ),
+                          Expanded(
+                            flex: 1,
+                            child: TextButton(
+                                onPressed: () {
+                                  onChangingPhoneNumber('6');
+                                },
+                                style: TextButton.styleFrom(
+                                  minimumSize: const Size(double.infinity, double.infinity),
+                                ),
+                                child: const Text('6', style: TextStyle(fontSize: 20, color: AppColors.n80))),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
+                    ),
+                    Container(
+                      color: AppColors.n20,
+                      height: 1,
+                      width: double.infinity,
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: Row(
+                        children: [
+                          Expanded(
+                            flex: 1,
+                            child: TextButton(
+                                onPressed: () {
+                                  onChangingPhoneNumber('7');
+                                },
+                                style: TextButton.styleFrom(
+                                  minimumSize: const Size(double.infinity, double.infinity),
+                                ),
+                                child: const Text('7', style: TextStyle(fontSize: 20, color: AppColors.n80))),
+                          ),
+                          Container(
+                            color: AppColors.n20,
+                            height: double.infinity,
+                            width: 1,
+                          ),
+                          Expanded(
+                            flex: 1,
+                            child: TextButton(
+                                onPressed: () {
+                                  onChangingPhoneNumber('8');
+                                },
+                                style: TextButton.styleFrom(
+                                  minimumSize: const Size(double.infinity, double.infinity),
+                                ),
+                                child: const Text('8', style: TextStyle(fontSize: 20, color: AppColors.n80))),
+                          ),
+                          Container(
+                            color: AppColors.n20,
+                            height: double.infinity,
+                            width: 1,
+                          ),
+                          Expanded(
+                            flex: 1,
+                            child: TextButton(
+                                onPressed: () {
+                                  onChangingPhoneNumber('9');
+                                },
+                                style: TextButton.styleFrom(
+                                  minimumSize: const Size(double.infinity, double.infinity),
+                                ),
+                                child: const Text('9', style: TextStyle(fontSize: 20, color: AppColors.n80))),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      color: AppColors.n20,
+                      height: 1,
+                      width: double.infinity,
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: Row(
+                        children: [
+                          Expanded(
+                            flex: 1,
+                            child: TextButton(
+                                onPressed: phoneNumber.isEmpty
+                                    ? null
+                                    : () {
+                                        onChangingPhoneNumber('');
+                                      },
+                                style: TextButton.styleFrom(
+                                  minimumSize: const Size(double.infinity, double.infinity),
+                                ),
+                                child: const Text('<-', style: TextStyle(fontSize: 20, color: AppColors.n80))),
+                          ),
+                          Container(
+                            color: AppColors.n20,
+                            height: double.infinity,
+                            width: 1,
+                          ),
+                          Expanded(
+                            flex: 1,
+                            child: TextButton(
+                                onPressed: () {
+                                  onChangingPhoneNumber('0');
+                                },
+                                style: TextButton.styleFrom(
+                                  minimumSize: const Size(double.infinity, double.infinity),
+                                ),
+                                child: const Text('0', style: TextStyle(fontSize: 20, color: AppColors.n80))),
+                          ),
+                          Container(
+                            color: AppColors.n20,
+                            height: double.infinity,
+                            width: 1,
+                          ),
+                          Expanded(
+                            flex: 1,
+                            child: TextButton(
+                                onPressed: phoneNumber.length > 7 ? onEnterPhoneNumber : null,
+                                style: TextButton.styleFrom(
+                                  minimumSize: const Size(double.infinity, double.infinity),
+                                ),
+                                child: const Text('Enter', style: TextStyle(fontSize: 20, color: AppColors.n80))),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
-                Expanded(
-                  flex: 1,
-                  child: Row(
-                    children: [
-                      Expanded(
-                        flex: 1,
-                        child: ElevatedButton(
-                            onPressed: () {
-                              onChangingPhoneNumber('4');
-                            },
-                            style: ElevatedButton.styleFrom(
-                              minimumSize:
-                                  const Size(double.infinity, double.infinity),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(00),
-                              ),
-                            ),
-                            child: const Text('4')),
-                      ),
-                      Expanded(
-                        flex: 1,
-                        child: ElevatedButton(
-                            onPressed: () {
-                              onChangingPhoneNumber('5');
-                            },
-                            style: ElevatedButton.styleFrom(
-                              minimumSize:
-                                  const Size(double.infinity, double.infinity),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(00),
-                              ),
-                            ),
-                            child: const Text('5')),
-                      ),
-                      Expanded(
-                        flex: 1,
-                        child: ElevatedButton(
-                            onPressed: () {
-                              onChangingPhoneNumber('6');
-                            },
-                            style: ElevatedButton.styleFrom(
-                              minimumSize:
-                                  const Size(double.infinity, double.infinity),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(00),
-                              ),
-                            ),
-                            child: const Text('6')),
-                      ),
-                    ],
-                  ),
-                ),
-                Expanded(
-                  flex: 1,
-                  child: Row(
-                    children: [
-                      Expanded(
-                        flex: 1,
-                        child: ElevatedButton(
-                            onPressed: () {
-                              onChangingPhoneNumber('7');
-                            },
-                            style: ElevatedButton.styleFrom(
-                              minimumSize:
-                                  const Size(double.infinity, double.infinity),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(00),
-                              ),
-                            ),
-                            child: const Text('7')),
-                      ),
-                      Expanded(
-                        flex: 1,
-                        child: ElevatedButton(
-                            onPressed: () {
-                              onChangingPhoneNumber('8');
-                            },
-                            style: ElevatedButton.styleFrom(
-                              minimumSize:
-                                  const Size(double.infinity, double.infinity),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(00),
-                              ),
-                            ),
-                            child: const Text('8')),
-                      ),
-                      Expanded(
-                        flex: 1,
-                        child: ElevatedButton(
-                            onPressed: () {
-                              onChangingPhoneNumber('9');
-                            },
-                            style: ElevatedButton.styleFrom(
-                              minimumSize:
-                                  const Size(double.infinity, double.infinity),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(00),
-                              ),
-                            ),
-                            child: const Text('9')),
-                      ),
-                    ],
-                  ),
-                ),
-                Expanded(
-                  flex: 1,
-                  child: Row(
-                    children: [
-                      Expanded(
-                        flex: 1,
-                        child: ElevatedButton(
-                            onPressed: () {
-                              onChangingPhoneNumber('');
-                            },
-                            style: ElevatedButton.styleFrom(
-                              minimumSize:
-                                  const Size(double.infinity, double.infinity),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(00),
-                              ),
-                            ),
-                            child: const Text('<-')),
-                      ),
-                      Expanded(
-                        flex: 1,
-                        child: ElevatedButton(
-                            onPressed: () {
-                              onChangingPhoneNumber('0');
-                            },
-                            style: ElevatedButton.styleFrom(
-                              minimumSize:
-                                  const Size(double.infinity, double.infinity),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(00),
-                              ),
-                            ),
-                            child: const Text('0')),
-                      ),
-                      Expanded(
-                        flex: 1,
-                        child: ElevatedButton(
-                            onPressed: () {},
-                            style: ElevatedButton.styleFrom(
-                              minimumSize:
-                                  const Size(double.infinity, double.infinity),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(00),
-                              ),
-                            ),
-                            child: const Text('Enter')),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
+          if (isLoading)
+            Container(
+              color: Colors.black.withOpacity(0.4), // 반투명한 배경
+              child: const Center(
+                child: SizedBox(
+                  width: 150, // 원하는 너비
+                  height: 150, // 원하는 높이
+                  child: CircularProgressIndicator(
+                    color: AppColors.y50,
+                    strokeWidth: 12,
+                  ),
+                ),
+              ),
+            ),
         ],
       ),
     );

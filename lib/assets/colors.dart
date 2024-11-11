@@ -1,62 +1,8 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
-import 'package:random_game/assets/text_data.dart';
 
-const WHITE = Color(0xFFFFFFFF);
-const BOTTOM_SHEET_BG = Color(0xFFF8F8F8);
-const BUTTON_BORDER = Color(0xFFDFDEDE);
-
-const PRIMARY_50 = Color(0xFFF8F5FF);
-const PRIMARY_100 = Color(0xFFF4EFFF);
-const PRIMARY_200 = Color(0xFFDCCCFF);
-const PRIMARY_500 = Color(0xFF8E5BFE);
-
-const CANCEL_LABEL_BG = Color(0xFFFFF0F0);
-const APPLY_LABEL_BG = Color(0xFFEEF7FF);
-const WAIT_LABEL_BG = Color(0xFFFFF5E1);
-
-const ERROR = Color(0xFFFF3B30);
-const WARNING = Color(0xFFFFBC35);
-const INFORMATION = Color(0xFF387DFF);
-////////
-
-const BLACK = Color(0xFF000000);
-const RED = Color(0xFFEB5757);
-const GRAY = Color(0xFFFAFAFC);
-const MOBILE_GRAY = Color(0xFFF2F3F7);
-const TRANSPARENT = Color(0x00000000);
-
-const KAKAO = Color(0xFFFFEB00);
-
-const NATURAL_N20 = Color(0xFFEAEAEA);
-const NATURAL_N30 = Color(0xFFDFDEDE);
-const NATURAL_N40 = Color(0xFFC8C8C8);
-const NATURAL_N50 = Color(0xFFAAAAAA);
-const NATURAL_N60 = Color(0xFF848484);
-const NATURAL_N70 = Color(0xFF666666);
-const NATURAL_N80 = Color(0xFF3D3D3D);
-const NATURAL_N90 = Color(0xFF212121);
-
-const YELLOW_100 = Color(0xFFFFF3DD);
-const YELLOW_200 = Color(0xFFFFDC99);
-const YELLOW_400 = Color(0xFFFFBA33);
-const YELLOW_500 = Color(0xFFFFA800);
-
-const BLUE_50 = Color(0xFFF6F9FF);
-const BLUE_100 = Color(0xFFEDF2FF);
-const BLUE_200 = Color(0xFFE4EBFF);
-const BLUE_400 = Color(0xFF487AFF);
-const BLUE_500 = Color(0xFF416EE6);
-
-const PINK_50 = Color(0xFFFFF1F1);
-const PINK_100 = Color(0xFFFFD3D3);
-
-const STORE_ROW_ITEM_TITLE = Color(0xFF1E1E1E);
-const STORE_ROW_ITEM_SUBTITLE = Color(0xFF9D9D9D);
-
-Color get randomColor =>
-    Color((math.Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1.0);
+Color get randomColor => Color((math.Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1.0);
 
 class AppColors {
   static const Color n10 = Color(0xFFF8F8F8);
@@ -148,24 +94,84 @@ class AppTheme {
       labelSmall: TextStyle(color: AppColors.n80),
     ),
     appBarTheme: const AppBarTheme(
-      color: AppColors.surfaceMixed100,
-      iconTheme: IconThemeData(color: AppColors.primary600),
+      color: AppColors.white,
+      iconTheme: IconThemeData(color: AppColors.n80),
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all(AppColors.surfaceMixed400),
-        foregroundColor: MaterialStateProperty.all(Colors.white),
+        backgroundColor: WidgetStateProperty.all(AppColors.surfaceMixed400),
+        foregroundColor: WidgetStateProperty.all(Colors.white),
       ),
     ),
     colorScheme: const ColorScheme.dark(
       primary: AppColors.primary600,
       secondary: AppColors.primary400,
       surface: AppColors.surface300,
-      background: AppColors.surface200,
       onPrimary: Colors.white,
       onSecondary: Colors.white,
       onSurface: Colors.white,
-      onBackground: Colors.white,
+    ),
+  );
+  static final ThemeData lightTheme = ThemeData(
+    brightness: Brightness.light,
+    primaryColor: AppColors.y50,
+    scaffoldBackgroundColor: AppColors.white,
+    cardColor: AppColors.white,
+    dividerColor: AppColors.n30,
+    canvasColor: AppColors.white,
+    textTheme: const TextTheme(
+      displayLarge: TextStyle(color: AppColors.n40),
+      displayMedium: TextStyle(color: AppColors.n40),
+      displaySmall: TextStyle(color: AppColors.n40),
+      headlineLarge: TextStyle(color: AppColors.n40),
+      headlineMedium: TextStyle(color: AppColors.n40),
+      headlineSmall: TextStyle(color: AppColors.n40),
+      titleLarge: TextStyle(color: AppColors.n40),
+      titleMedium: TextStyle(color: AppColors.n40),
+      titleSmall: TextStyle(color: AppColors.n40),
+      bodyLarge: TextStyle(color: AppColors.n40),
+      bodyMedium: TextStyle(color: AppColors.n40),
+      bodySmall: TextStyle(color: AppColors.n40),
+      labelLarge: TextStyle(color: AppColors.n40),
+      labelMedium: TextStyle(color: AppColors.n40),
+      labelSmall: TextStyle(color: AppColors.n40),
+    ),
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+      backgroundColor: AppColors.white,
+      selectedItemColor: AppColors.n80,
+      unselectedItemColor: AppColors.n40,
+      selectedIconTheme: IconThemeData(color: AppColors.n80),
+      unselectedIconTheme: IconThemeData(color: AppColors.n40),
+    ),
+    appBarTheme: const AppBarTheme(
+      color: AppColors.white,
+      iconTheme: IconThemeData(color: AppColors.n80),
+    ),
+    textButtonTheme: TextButtonThemeData(
+      style: TextButton.styleFrom(
+        textStyle: const TextStyle(color: AppColors.n40),
+        disabledBackgroundColor: AppColors.gray,
+        shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero, side: BorderSide.none),
+      ),
+    ),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+        elevation: 0,
+        backgroundColor: AppColors.white,
+        foregroundColor: AppColors.white,
+        textStyle: const TextStyle(color: AppColors.n40),
+        disabledBackgroundColor: AppColors.gray,
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.zero, side: BorderSide(width: 0, color: AppColors.n40)),
+      ),
+    ),
+    colorScheme: const ColorScheme.light(
+      primary: AppColors.n80,
+      secondary: AppColors.n80,
+      surface: AppColors.white,
+      onPrimary: AppColors.white,
+      onSecondary: AppColors.white,
+      onSurface: AppColors.white,
     ),
   );
 }

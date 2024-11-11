@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:random_game/screen/main/waiting_screen.dart';
-import 'package:random_game/screen/main/week/home_screen.dart';
-import 'package:random_game/screen/main/week/cleaning_member_screen.dart';
 
 import 'assets/colors.dart';
-import 'screen/main/profile_screen.dart';
 
 void main() {
+  // Flutter 바인딩 초기화
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // 시스템 UI 오버레이 숨기기
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
   runApp(const MyApp());
 }
 
@@ -16,15 +19,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-        colorScheme: AppTheme.darkTheme.colorScheme,
-        useMaterial3: true,
-      ),
-      darkTheme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const MainScreen(),
+      theme: AppTheme.lightTheme,
+      darkTheme: AppTheme.darkTheme,
+      themeMode: ThemeMode.light,
+      home: const WaitingScreen(),
     );
   }
 }
@@ -40,10 +38,7 @@ class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
 
   static const List<Widget> _widgetOptions = <Widget>[
-    Home(),
-    CleaningMemberScreen(),
     WaitingScreen(),
-    ProfileScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -56,26 +51,6 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: _widgetOptions.elementAt(_selectedIndex),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: '이번주 식사 당번',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: '이번주 청소 당번',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: '프로필',
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.white,
-        selectedFontSize: 12,
-        onTap: _onItemTapped,
-      ),
     );
   }
 }
