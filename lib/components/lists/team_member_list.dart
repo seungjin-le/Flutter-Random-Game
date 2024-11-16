@@ -11,8 +11,7 @@ class TeamMemberListItem extends StatefulWidget {
   _TeamMemberListItemState createState() => _TeamMemberListItemState();
 }
 
-class _TeamMemberListItemState extends State<TeamMemberListItem>
-    with SingleTickerProviderStateMixin {
+class _TeamMemberListItemState extends State<TeamMemberListItem> with SingleTickerProviderStateMixin {
   bool _isExpanded = false;
   late AnimationController _controller;
   late Animation<double> _heightFactor;
@@ -63,9 +62,8 @@ class _TeamMemberListItemState extends State<TeamMemberListItem>
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  widget.team.teamName ?? 'Unknown Team',
-                  style: const TextStyle(
-                      fontSize: 20, fontWeight: FontWeight.bold),
+                  widget.team.teamName ?? '0 팀',
+                  style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
               ),
             ),
@@ -75,10 +73,7 @@ class _TeamMemberListItemState extends State<TeamMemberListItem>
           child: Align(
             heightFactor: _heightFactor.value,
             child: Column(
-              children: widget.team.members
-                      ?.map((member) => MemberListItem(member))
-                      .toList() ??
-                  [],
+              children: widget.team.members?.map((member) => MemberListItem(member)).toList() ?? [],
             ),
           ),
         ),

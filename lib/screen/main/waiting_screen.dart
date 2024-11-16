@@ -50,25 +50,34 @@ class _WaitingScreenState extends State<WaitingScreen> {
               contentPadding: const EdgeInsets.all(0),
               actionsPadding: const EdgeInsets.all(0),
               actionsOverflowAlignment: OverflowBarAlignment.center,
-              title: const Column(
-                children: [
-                  SizedBox(height: 8, width: double.infinity, child: Divider(color: AppColors.y50)),
-                  Text("내용", style: TextStyle(fontSize: 20, color: AppColors.n80)),
-                ],
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8.0),
+              ),
+              title:const Center(
+                child:Text("제목", style: TextStyle(fontSize: 20, color: AppColors.n80))
+              ),
+              content:const Center(
+                heightFactor: 1,
+                child:Text("내용", style: TextStyle(fontSize: 14, color: AppColors.n60))
               ),
               actions: [
-                TextButton(
-                  onPressed: () {
-                    Navigator.of(context).pop(); //창 닫기
-                  },
-                  child: const Text("네", style: TextStyle(fontSize: 20, color: AppColors.n80)),
-                ),
-                TextButton(
-                  onPressed: () {
-                    Navigator.of(context).pop(); //창 닫기
-                  },
-                  child: const Text("아니요", style: TextStyle(fontSize: 20, color: AppColors.n80)),
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: const Text("네", style: TextStyle(fontSize: 20, color: AppColors.n80)),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: const Text("아니요", style: TextStyle(fontSize: 20, color: AppColors.n80)),
+                  ),
+                ],
+              ),
               ],
             );
           },
