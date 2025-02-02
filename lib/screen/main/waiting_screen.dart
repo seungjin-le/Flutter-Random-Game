@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:random_game/assets/colors.dart';
-// import 'package:random_game/components/dialog/AlertDialog.dart';
 
 class WaitingScreen extends StatefulWidget {
   const WaitingScreen({super.key});
