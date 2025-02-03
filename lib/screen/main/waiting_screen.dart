@@ -24,6 +24,7 @@ class _WaitingScreenState extends State<WaitingScreen> {
     }
   }
 
+  // 전화번호 변경 함수
   String formatPhoneNumber(String number) {
     if (number.length <= 4) {
       return number;
