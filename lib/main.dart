@@ -41,6 +41,7 @@ class _MainScreenState extends State<MainScreen> {
     WaitingScreen(),
   ];
 
+  // 클릭 이벤트
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
